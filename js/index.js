@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	console.log(allText);
 	allText.forEach((text) => {
 		console.log(text);
-		const splittedText = SplitText.create(text, {
+		const splittedText = SplitType.create(text, {
 			type: 'lines,words,chars',
 			linesClass: 'line',
 			wordsClass: 'word',
