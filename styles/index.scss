@@ -1,0 +1,42 @@
+@import './functions.scss';
+@import './mixin.scss';
+
+.h-title {
+    font-size: clamps(60, 120, 320, 1920);
+    line-height: 1.2;
+}
+
+.h1 {
+    font-size: clamps(48,96, 320, 1920);
+    line-height: 1.2;
+}
+
+.h2 {
+    font-size: clamps(36, 62, 320, 1920);
+    line-height: 1.5;
+}
+
+.h3 {
+    font-size: clamps(24, 48, 320, 1920);
+    line-height: 1.2;
+}
+
+.h4 {
+    font-size: clamps(20, 36, 320, 1920);
+    line-height: 1.2;
+}
+
+.h5 {
+    font-size: clamps(18, 24, 320, 1920);
+    line-height: 1.2;
+}
+
+.h6 {
+    font-size: clamps(16, 20, 320, 1920);
+    line-height: 1.2;
+}
+
+.p {
+    font-size: clamps(14, 18, 320, 1920);
+    line-height: 1.6;
+}

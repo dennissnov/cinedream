@@ -1,0 +1,49 @@
+
+@use 'sass:math';
+$base-font-size: 16;
+
+@function clamps($min-value-px, $max-value-px, $min-viewport, $max-viewport, $unitless: false) {
+	$slope: math.div(
+		$max-value-px - $min-value-px,
+		$max-viewport - $min-viewport
+	);
+	$intercept: $min-value-px - ($slope * $min-viewport);
+	$slope-vw: $slope * 100;
+
+	@if $unitless {
+		// Return the unitless values for scale.
+		@return clamp(
+			#{$min-value-px / 1000},
+			#{$intercept / 1000} + #{$slope-vw / 1000}vw,
+			#{$max-value-px / 1000}
+		);
+	}
+
+	// Default to rem-based output for other use cases.
+	$min-value-rem: math.div($min-value-px, $base-font-size);
+	$max-value-rem: math.div($max-value-px, $base-font-size);
+	$intercept-rem: math.div($intercept, $base-font-size);
+
+	@return clamp(
+		#{$min-value-rem}rem,
+		#{$intercept-rem}rem + #{$slope-vw}vw,
+		#{$max-value-rem}rem
+	);
+}
+
+
+
+@function clamps-scale($min, $max, $min-viewport, $max-viewport) {
+	$slope: math.div(
+		$max - $min,
+		$max-viewport - $min-viewport
+	);
+	$intercept: $min - ($slope * $min-viewport);
+	$slope-vw: $slope * 100;
+
+	@return clamp(
+		#{$min},
+		#{$intercept} + #{$slope-vw}vw,
+		#{$max}
+	);
+}

@@ -1,0 +1,22 @@
+
+
+@function calculateColumn($column: 1, $maxcolumn: 12) {
+	$size: 100% / $maxcolumn * $column;
+	@return $size;
+}
+
+@mixin createColumn($collumn: 1, $maxcolumn: 12, $offset: 0, $plus: true) {
+	display: block;
+	width: 100%;
+	padding-left: calc(var(--row-gutter) / 2);
+	padding-right: calc(var(--row-gutter) / 2);
+	flex: 0 0 #{calculateColumn($collumn, $maxcolumn)};
+
+	@if $plus {
+		max-width: calc(#{calculateColumn($collumn, $maxcolumn)} + #{$offset}px);
+	}
+
+	@else {
+		max-width: calc(#{calculateColumn($collumn, $maxcolumn)} - #{$offset}px);
+	}
+}
